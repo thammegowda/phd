@@ -1,0 +1,38 @@
+\usepackage{amsmath}
+\usepackage{multirow}
+
+% Tables stuff
+\usepackage{multirow}
+\usepackage{arydshln}
+% images stuff
+\usepackage{graphicx}
+\usepackage{float}
+%\usepackage{subfig}
+\usepackage{subcaption}
+
+
+% comment
+\usepackage{verbatim}
+% indicator notation
+\usepackage{bbm}
+
+
+\usepackage{textcomp}
+\usepackage{enumitem} 
+
+\usepackage{multirow}
+%\usepackage{arydshln}
+\usepackage{caption}
+\usepackage{subcaption}
+
+%\usepackage[dvipsnames]{xcolor} % already imported
+\newcommand{\colorann}[3]{\textcolor{#1}{${}^{#2}[$#3$]$}}
+%\newcommand{\jon}[1]{\colorann{red}{Jon}{#1}}
+%\newcommand{\tg}[1]{\colorann{blue}{TG}{#1}}
+
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+% for some weird reason, the above didnt put variable at the bottom middle
+\newcommand{\argminn}[1]{\raisebox{0.5ex}{\scalebox{0.85}{$\displaystyle \argmin_{#1}\;$}}}
+\newcommand{\argmaxx}[1]{\raisebox{0.5ex}{\scalebox{0.85}{$\displaystyle \argmax_{#1}\;$}}}
+\graphicspath{{./img/} {./img/optimvocab/}}

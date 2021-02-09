@@ -1,0 +1,26 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion and Conclusion}
+\label{sec:conclusion}
+Envisioning NMT as a multi-class classifier with an autoregressive feature extractor has opened several possibilities:
+Firstly, it has enabled us to apply the findings from classification and autoregression modeling literature to understand the strengths and weaknesses of NMT modeling. And secondly, it has enabled us to use the standard classifier evaluation metrics for MT evaluation.
+
+Our analysis of classifier and autoregression components provides an explanation of \textit{why} text generation using BPE vocabulary is more effective than word and character vocabularies, and \textit{why} some BPE hyperparameters are better than others.
+We show that the number of BPE merges is not an arbitrary hyperparameter and that it can be tuned to address the class imbalance and sequence length problems. Our recommendation for Transformer NMT is to \textit{use the largest possible BPE vocabulary such that at least 95\% of classes have 100 or more examples in training}. 
+
+We have evaluated NLG in general and MT specifically as a multi-class classifier, and illustrated the differences between micro- and macro- averages using \mif1 and \maf1 as examples.
+\maf1 captures semantic adequacy better than \mif1.
+%\bleu, being a micro-averaged measure, served well in an era when generating fluent text was at least as difficult as generating adequate text. Since we are now in an era in which fluency is taken for granted and semantic adequacy is a key discriminating factor, macro-averaged measures such as \maf1 are better at judging the generation quality of MT models (Section~\ref{sec:wmt-metrics}).
+We have found that another popular metric, \chrf1, also performs well on direct assessment,
+%as it uses character level n-grams that offer robustness to morphological variations
+however, being an implicitly micro-averaged measure, it does not perform as well as \maf1 on downstream CLIR tasks.
+Unlike BLEURT, which is also adequacy-oriented, \maf1 is directly interpretable, does not require retuning on expensive human evaluations when changing language or domain, and does not appear to have uncontrollable biases resulting from data effect.
+%We have also included a comparison to BLEURT, but we reserve our concerns regarding the non-transparency and biased evaluation by such model-based methods. %(Section~\ref{sec:model-bias}). 
+%\maf1 is competitive to alternative methods and has the advantage of 
+It is both easy to understand and to calculate, and is  
+inspectable, enabling fine-grained analysis at the level of individual word types. These attributes make it a useful metric for understanding and addressing the flaws of current models. 
+%For instance, we have used \maf1 to compare supervised and unsupervised NMT models at the same operating point measured in \bleu, and determined that supervised models have better adequacy than the current unsupervised models (Section~\ref{sec:unmt}).
+
+Even though some BPE vocabulary sizes indirectly reduce the class imbalance, they do not eliminate it.
+Even after applying BPE segmentation, the class distributions remain to possess sufficient imbalance that induces a frequency-based bias and affects the recall of rare classes.
+Hence more effort is needed for directly dealing with the Zipfian imbalance that is inevitable in all MT datasets.
+Using \maf1 as an NLG evaluation metric is our first step in acknowledging the importance of the long tail of language systems; we anticipate the development of more advanced macro-averaged metrics that take advantage of higher-order and character n-grams in the future. 
