@@ -1,2 +1,4 @@
-# phd
-PhD stuff
+# Ph.D.
+
+PhD stuff. Names should be self explanatory.
+
